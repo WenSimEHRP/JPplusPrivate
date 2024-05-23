@@ -19,8 +19,41 @@ switch(FEAT_TRAINS, SELF, name, [\
     2: s2;\
 }
 /*
-* HOW PURCHASE_GRAPHICS WORKS
+* HOW DOES A GRAPHIC STACK WORK
+Sprite stacking was supported since openttd 1.7, and further expanded in openttd 13.
+After v13 the game allows stacking up to 8 sprites.
 
-too long, dunno how to explain it
+The stack uses a switch statement to determine which sprite to draw.
+
+A typical stack looks like this:
+
+switch(FEAT_TRAINS, SELF, name, [                                   //* The switch statement
+    STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100),  //* STORE_TEMP, where it marks to draw multiple sprites
+    getbits(extra_callback_info1, 8, 8)                             //* indicates the sprite sequence
+    ]) {
+    0: s0;                      //* sprite 0
+    1: s1;                      //* sprite 1
+    2: s2;                      //* sprite 2
+    more sprites...
+}
+
+the condition is STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), where
+0x100 is a special register that tells the game to draw multiple sprites,
+and the part before the comma tells what palette to use, and if the sprites should be stacked.
+More specifically, CB_FLAG_MORE_SPRITES tells the game to draw multiple sprites, and
+PALETTE_USE_DEFAULT tells the game to use the default palette.
+
+The last item of the array is getbits(extra_callback_info1, 8, 8), in which, the last item's
+value is used to determine which sprite to draw. It ranges from 0 to 7, and the game will draw
+the sprite that corresponds to the value. So, 0 will draw s0, 1 will draw s1, and so on.
+
+s0, s1, s2, etc. could be spritesets, spritegroups, or switches.
+
+Spritestacks could be used in many places, such as to show logos in the purchase menu, to reduce
+producing same elements in similar graphics, and so on.
+
+The condition, which is STORE_TEMP(...,0x100), could be modified to meet the needs of the stack.
+For example, if you want a parameter to control the stack, you could use a variable, like this:
+STORE_TEMP((param_show_logo == 1 ? (CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT) : PALETTE_USE_DEFAULT), 0x100)
 
 */
