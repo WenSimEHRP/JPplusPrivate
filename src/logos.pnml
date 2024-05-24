@@ -1,6 +1,9 @@
 template tmpl_logos() {
     [0,0,48,32,-90,-20]
 }
+template tmpl_logos_normal() {
+    [0,0,24,16,-5,-12]
+}
 
 spriteset (logos_purchase, "gfx/misc/purchase.png") { tmpl_purchase(0, 0) }
 spriteset (logos_tokyo_metro, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,"gfx/logos/tokyo_metro.png") { tmpl_logos() }
@@ -8,3 +11,10 @@ spriteset (logos_osaka_metro, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,"gfx/logos/osaka
 spriteset (logos_fukuoka, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,"gfx/logos/fukuoka.png") { tmpl_logos() }
 spriteset (logos_toei, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,"gfx/logos/toei.png") { tmpl_logos() }
 spriteset (logos_yokohama_subway, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP,"gfx/logos/yokohama_subway.png") { tmpl_logos() }
+
+
+alternative_sprites (logos_tokyo_metro, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,"gfx/logos/tokyo_metro.png") { tmpl_logos_normal() }
+alternative_sprites (logos_osaka_metro, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,"gfx/logos/osaka_metro.png") { tmpl_logos_normal() }
+alternative_sprites (logos_fukuoka, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,"gfx/logos/fukuoka.png") { tmpl_logos_normal() }
+alternative_sprites (logos_toei, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,"gfx/logos/toei.png") { tmpl_logos_normal() }
+alternative_sprites (logos_yokohama_subway, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP,"gfx/logos/yokohama_subway.png") { tmpl_logos_normal() }

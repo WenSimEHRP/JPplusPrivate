@@ -1,3 +1,8 @@
+//*macros import
+#include "src/controllers/defines.pnml"
+// macros should be imported before any other file
+
+//*controllers import
 #include "src/controllers/params.pnml"
 #include "src/controllers/errorController.pnml"
 #include "src/controllers/railtypes.pnml"
@@ -5,6 +10,9 @@
 #include "src/controllers/templates.pnml"
 #include "src/controllers/mu_cars.pnml"
 #include "src/controllers/sounds.pnml"
+
+//*logos import
+#include "src/logos.pnml"
 
 //*trains import
 #include "src/_metro.pnml"

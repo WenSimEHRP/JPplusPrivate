@@ -87,7 +87,7 @@ switch(FEAT_TRAINS, SELF, fk_kk_1000series_attach_vehid, vehicle_type_id) {
   return string(STR_ATTACH_ERROR);
 }
 
-GRAPHIC_STACK_2(sw_fk_kk_1000series_purchase, fk_kk_1000series_wag, logos_fukuoka)
+GRAPHIC_STACK_2(sw_fk_kk_1000series_purchase, fk_kk_1000series_wag, logos_yokohama_subway)
 
 item(FEAT_TRAINS, fk_kk_1000series,1450) {
     property {
